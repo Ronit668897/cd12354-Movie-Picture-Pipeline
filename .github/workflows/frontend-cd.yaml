@@ -13,8 +13,8 @@ on:
 env:
   AWS_REGION: us-east-1
   ECR_REPOSITORY: frontend
-  EKS_CLUSTER: cluster
-  REACT_APP_MOVIE_API_URL: http://localhost:5000
+  EKS_CLUSTER_NAME: cluster
+  REACT_APP_MOVIE_API_URL: http://af55ab8f2ae7b4bb7857871ad6c4bd2d-655145293.us-east-1.elb.amazonaws.com
 
 jobs:
 
@@ -130,7 +130,7 @@ jobs:
       - name: Configure kubectl
         run: |
           aws eks update-kubeconfig \
-            --name ${{ env.EKS_CLUSTER }} \
+            --name ${{ env.EKS_CLUSTER_NAME }} \
             --region ${{ env.AWS_REGION }}
       - name: Login to Amazon ECR
         id: login-ecr
